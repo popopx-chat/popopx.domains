@@ -69,7 +69,7 @@ usage() {
 
 发布白名单：index.html favicon.ico apple-touch-icon.png robots.txt
             assets/ img/ fonts/Manrope/
-README.md、deploy/ 与 fonts/GT-Walsheim/ 不会进入 Web 根目录。
+README.md 与 deploy/ 不会进入 Web 根目录。
 USAGE
 }
 

@@ -46,8 +46,7 @@ macOS 自带的 LibreSSL 不支持 `x509 -ext`，因此上面用 `-text | grep` 
 - **零外部请求**：整页只有 8 个请求，全部同源——1 个 HTML、`assets/site.css`、`assets/theme.js`、`assets/site.js`、`img/popopx-mark.svg`，以及 Manrope 400/600/800 三个 TTF。无统计、无追踪像素、无 CDN。
 - **严格 CSP 兼容**：无内联 `<style>`、无内联 `<script>`、无 `style=""` 属性，服务器以 `default-src 'self'` 下发 CSP。
 - **零追踪存储**：不使用 Cookie；`localStorage` 只保存明暗主题偏好。
-- **字体自托管**：`fonts/Manrope/`（SIL OFL 1.1，许可证见 `fonts/Manrope/OFL.txt`），中文回退系统字体。
-- **不发布非自由字体**：`fonts/GT-Walsheim/` 为上游遗留的商用字体，许可证不允许再分发（见该目录内 README）。它保留在源码仓库中，但不在页面引用，也不在部署白名单内。
+- **字体自托管**：`fonts/Manrope/`（SIL OFL 1.1，许可证见 `fonts/Manrope/OFL.txt`），中文回退系统字体。上游遗留的商用字体 GT-Walsheim 因许可证不允许再分发，已于 2026-11-27 从仓库移除。
 - **无构建步骤**：直接编辑 `index.html` / `assets/` 即可；`favicon.ico` 与 `apple-touch-icon.png` 由 `img/popopx-mark.svg` 预渲染（Chrome headless 512px → `sips` 缩放，ICO 为 16/32/48/64 四尺寸封装）。
 
 ## 目录结构
@@ -62,7 +61,6 @@ favicon.ico                16/32/48/64
 apple-touch-icon.png       180×180 全出血方形
 robots.txt
 fonts/Manrope/             7 个 TTF + OFL.txt
-fonts/GT-Walsheim/         非自由字体，不发布
 deploy/centos/deploy_centos.sh
 ```
 
@@ -110,7 +108,7 @@ sudo ./deploy/centos/deploy_centos.sh --email ops@example.com --yes
 
 脚本行为：
 
-1. 按白名单暂存静态文件（`index.html`、`favicon.ico`、`apple-touch-icon.png`、`robots.txt`、`assets/`、`img/`、`fonts/Manrope/`），`README.md`、`deploy/`、`fonts/GT-Walsheim/` 不会进入 Web 根目录。
+1. 按白名单暂存静态文件（`index.html`、`favicon.ico`、`apple-touch-icon.png`、`robots.txt`、`assets/`、`img/`、`fonts/Manrope/`），`README.md` 与 `deploy/` 不会进入 Web 根目录。
 2. 预检：拒绝暂存目录中出现上游品牌字符串、外部资源加载、内联脚本/样式。
 3. 安装 `nginx`、`rsync`；需要时安装 `certbot`。
 4. `rsync --delete` 同步到 Web 根目录，保证线上与白名单完全一致。
@@ -149,4 +147,4 @@ sudo certbot renew --dry-run
 
 ## 许可证
 
-页面代码随本仓库发布。字体 Manrope 采用 SIL Open Font License 1.1，全文见 `fonts/Manrope/OFL.txt`。`fonts/GT-Walsheim/` 不在许可证覆盖范围内，且不随站点分发。
+页面代码随本仓库发布。字体 Manrope 采用 SIL Open Font License 1.1，全文见 `fonts/Manrope/OFL.txt`。仓库内字体仅此一项。

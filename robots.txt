@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# POPOPX · domains.popopx.chat — official domain safety disclosure.

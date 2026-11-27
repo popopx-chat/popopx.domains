@@ -1,449 +1,333 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-Hans" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>simplex.domains — Your SimpleX domain</title>
-<meta name="description" content="Your SimpleX domain — one name for your public channel and contact address. Public sale opens December 12, 2026.">
-<link rel="icon" type="image/png" sizes="96x96" href="/favicon.ico">
-<script>if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) document.documentElement.classList.add('dark')</script>
-<link rel="preload" href="img/logo-light.png" as="image">
-<link rel="preload" href="img/logo-dark.png" as="image">
-<link rel="preload" href="fonts/GT-Walsheim/GT-Walsheim-LC-Bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-Regular.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-Medium.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Manrope/Manrope-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<style>
-  @font-face { font-family: "GT-Walsheim"; src: url("fonts/GT-Walsheim/GT-Walsheim-LC-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
-  @font-face { font-family: "GT-Walsheim"; src: url("fonts/GT-Walsheim/GT-Walsheim-LC-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: "GT-Walsheim"; src: url("fonts/GT-Walsheim/GT-Walsheim-LC-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
-  @font-face { font-family: "GT-Walsheim"; src: url("fonts/GT-Walsheim/GT-Walsheim-LC-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Manrope"; src: url("fonts/Manrope/Manrope-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Manrope"; src: url("fonts/Manrope/Manrope-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Manrope"; src: url("fonts/Manrope/Manrope-SemiBold.ttf") format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Manrope"; src: url("fonts/Manrope/Manrope-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
-  @font-face { font-family: "Manrope"; src: url("fonts/Manrope/Manrope-ExtraBold.ttf") format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
-
-  :root {
-    --display: "GT-Walsheim", Gilroy, Helvetica, sans-serif;
-    --body: "Manrope", sans-serif;
-
-    --fs-count: clamp(40px, min(12vw, 20vh), 156px);
-    --fs-h2: clamp(20px, 2.3vw, 24px);
-    --fs-lead: clamp(19px, 2.3vw, 24px);
-    --fs-body: 18px;
-    --fs-small: clamp(14px, 1.5vw, 16px);
-    --fs-label: clamp(12px, 1.6vw, 16px);
-
-    --page-color: #F3FAFF;
-    --page-image:
-      radial-gradient(95% 62% at 85% 4%, oklch(0.90 0.07 255 / 0.45), transparent 62%),
-      radial-gradient(135% 108% at 50% 122%, oklch(0.92 0.075 255) 0%, oklch(0.965 0.035 253) 46%, oklch(0.995 0.008 250) 100%);
-    --heading: linear-gradient(to bottom, #53C1FF -50%, #0053D0 160%);
-    --ink: #0D1B3A;
-    --ink-soft: rgba(13, 27, 58, .651);
-    --primary: #0053D0;
-    --accent: #0197FF;
-    --toggle: #001796;
-    --sym-back: #023789;
-    --colon: rgba(0, 83, 208, .28);
-    --line-strong: rgba(0, 83, 208, .4);
-    --chip: rgba(0, 83, 208, .06);
-    --chip-line: rgba(0, 83, 208, .14);
-    --primary-ink: #ffffff;
-    --surface: #ffffff;
-    --surface-line: rgba(0, 83, 208, .14);
-    --surface-shadow: 0 30px 70px rgba(6, 24, 70, .22);
-    --backdrop: rgba(6, 20, 56, .38);
-  }
-  html.dark {
-    --page-color: #000832;
-    --page-image:
-      radial-gradient(92% 62% at 82% -2%, oklch(0.44 0.135 256 / 0.38), transparent 60%),
-      radial-gradient(140% 118% at 50% -12%, oklch(0.30 0.105 258) 0%, oklch(0.19 0.088 260) 46%, oklch(0.135 0.075 263) 100%);
-    --heading: linear-gradient(to bottom, #70F0F9 0%, #70F0F9 33%, #50D8F1 100%);
-    --ink: #EAF2FF;
-    --ink-soft: rgba(234, 242, 255, .735);
-    --primary: #70F0F9;
-    --accent: #02C0FF;
-    --toggle: #ffffff;
-    --sym-back: #ffffff;
-    --colon: rgba(112, 240, 249, .34);
-    --line-strong: rgba(112, 240, 249, .42);
-    --chip: rgba(112, 240, 249, .08);
-    --chip-line: rgba(112, 240, 249, .2);
-    --primary-ink: #041038;
-    --surface: #0A1C44;
-    --surface-line: rgba(112, 240, 249, .18);
-    --surface-shadow: 0 30px 70px rgba(0, 0, 0, .5);
-    --backdrop: rgba(2, 8, 26, .58);
-  }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { height: 100%; }
-  body {
-    font-family: var(--body);
-    color: var(--ink);
-    background-color: var(--page-color);
-    background-image: var(--page-image);
-    overflow: hidden;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
-  a { color: inherit; }
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
-
-  .hero {
-    position: relative;
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    padding: clamp(18px, 3.5vw, 44px);
-  }
-  @media (min-width: 1240px) {
-    .hero { padding-top: 0; }
-    .topbar {
-      position: absolute;
-      top: clamp(18px, 3.5vw, 44px);
-      left: clamp(18px, 3.5vw, 44px);
-      right: clamp(18px, 3.5vw, 44px);
-    }
-  }
-
-  .topbar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .brand { display: inline-flex; align-items: center; }
-  .brand-logo { height: clamp(36px, 4.4vw, 52px); width: auto; display: block; }
-  .logo-dark { display: none; }
-  html.dark .logo-light { display: none; }
-  html.dark .logo-dark { display: block; }
-
-  .theme-switch-btn { display: inline-flex; align-items: center; justify-content: center; background: transparent; border: none; cursor: pointer; padding: 6px; margin: -6px -6px 0 0; align-self: flex-start; }
-  .theme-switch-btn svg { width: 22px; height: auto; display: block; overflow: visible; }
-  .theme-switch-btn svg path { fill: var(--toggle); transition: fill .2s ease; }
-  .theme-switch-btn .sun { display: none; }
-  html.dark .theme-switch-btn .sun { display: block; }
-  html.dark .theme-switch-btn .moon { display: none; }
-
-  .ext { width: .82em; height: .82em; margin-left: .4em; fill: currentColor; vertical-align: -.06em; flex: none; }
-
-  .pill {
-    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--body); font-size: var(--fs-body); font-weight: 600; letter-spacing: .01em;
-    border-radius: 999px; border: 1px solid transparent; cursor: pointer;
-    text-decoration: none; white-space: nowrap; transition: filter .15s ease;
-  }
-  .pill--primary { background: var(--primary); color: var(--primary-ink); padding: 16px 32px; }
-  .pill--primary:hover { filter: brightness(1.06); }
-  .pill--primary:active { transform: translateY(1px); }
-  .pill .ext { margin-left: 0; }
-
-  .vspace { flex: 1; }
-  .vspace--cap { min-height: 18px; max-height: 108px; }
-  .headline, .clockwrap, .cta-block { flex: none; animation: rise .6s cubic-bezier(.2, .7, .2, 1) both; }
-  .clockwrap { animation-delay: .08s; }
-  .cta-block { animation-delay: .16s; }
-  @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-
-  .headline { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px; margin-inline: auto; container-type: inline-size; }
-  h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 10.3cqw, 66px); line-height: 1.02; letter-spacing: -.025em; font-kerning: none; white-space: nowrap; background: var(--heading); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; padding-bottom: .04em; }
-  .sub { font-family: var(--body); font-weight: 500; font-size: clamp(11px, 3.92cqw, 26px); margin-top: 3cqw; font-kerning: none; white-space: nowrap; color: var(--ink-soft); }
-
-  .clockwrap { display: flex; flex-direction: column; align-items: center; gap: clamp(10px, 1.5vh, 18px); width: 100%; max-width: 1100px; margin-inline: auto; }
-  .count { display: flex; align-items: center; justify-content: space-between; gap: clamp(4px, 1vw, 16px); padding-bottom: clamp(30px, 4vh, 46px); width: 100%; }
-  .grp { position: relative; display: flex; justify-content: center; }
-  .big { font-family: var(--display); font-weight: 700; font-size: var(--fs-count); line-height: .9; letter-spacing: -.03em; font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
-  html.dark .big { color: oklch(0.97 0.014 260); }
-  .lbl { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin-top: clamp(10px, 1.5vh, 18px); font-family: var(--body); font-weight: 600; font-size: var(--fs-label); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
-  .count-sep { display: flex; flex-direction: column; justify-content: center; gap: clamp(7px, 1.5vw, 16px); }
-  .count-sep i { width: clamp(6px, 1.1vw, 12px); aspect-ratio: 1; border-radius: 50%; background: var(--colon); display: block; }
-  .saleline { font-family: var(--body); font-weight: 600; font-size: var(--fs-label); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-soft); }
-
-  .cta-block { display: flex; flex-direction: column; align-items: center; gap: clamp(14px, 1.8vh, 20px); }
-  .perk-note { font-family: var(--body); font-weight: 500; font-size: var(--fs-body); color: var(--ink-soft); line-height: 1.45; }
-  .perk-br { display: none; }
-  .cta-block .pill { width: 100%; max-width: 384px; }
-
-  .pay { display: flex; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 14px; }
-  .pay-note { font-family: var(--body); font-size: var(--fs-small); font-weight: 500; color: var(--ink-soft); }
-  .pay-row { display: flex; flex-direction: row-reverse; flex-wrap: wrap; justify-content: center; gap: clamp(10px, 1.6vw, 16px); }
-  .pay-btn {
-    appearance: none; -webkit-appearance: none;
-    display: inline-flex; align-items: center; gap: 7px;
-    font-family: var(--body); font-size: var(--fs-small); font-weight: 500;
-    padding: 0; border: none; background: none; color: var(--ink-soft);
-    cursor: default;
-  }
-  .pay-btn svg { width: 21px; height: 21px; display: block; flex: none; }
-  .sym .sym-back { fill: var(--sym-back); }
-
-  .footer {
-    flex: none;
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    text-align: center;
-  }
-  .footer-links {
-    display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px;
-    font-family: var(--body); font-size: var(--fs-small); color: var(--ink-soft);
-  }
-  .footer-links a, .footer-links button { appearance: none; -webkit-appearance: none; font-family: var(--body); font-size: inherit; font-weight: 500; font-style: normal; line-height: normal; letter-spacing: normal; color: var(--primary); background: none; border: none; padding: 0; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; }
-  .footer-links a:hover, .footer-links button:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .footer-links .sep { color: var(--line-strong); font-weight: 400; }
-
-  .modal {
-    position: fixed; inset: 0; z-index: 50;
-    display: flex; align-items: center; justify-content: center;
-    padding: 24px;
-    opacity: 0; visibility: hidden;
-    transition: opacity .18s ease, visibility .18s;
-  }
-  .modal:target { opacity: 1; visibility: visible; }
-  .modal-backdrop { position: absolute; inset: 0; background: var(--backdrop); backdrop-filter: blur(3px); }
-  .modal-panel {
-    position: relative; z-index: 1;
-    width: clamp(min(440px, 100%), 62vw, 720px); max-height: calc(100dvh - 48px); overflow: auto;
-    background: var(--surface); color: var(--ink);
-    border-radius: 24px; box-shadow: var(--surface-shadow);
-    padding: clamp(42px, 6vw, 60px);
-  }
-  .modal-close { position: absolute; top: 24px; right: 24px; width: 20px; height: 20px; color: var(--ink-soft); text-decoration: none; }
-  .modal-close svg { display: block; width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
-  .modal-close:hover { color: var(--ink); }
-  .modal-panel h2 { font-family: var(--display); font-weight: 700; font-size: var(--fs-h2); letter-spacing: -.015em; line-height: 1.15; padding-right: 30px; }
-  .modal-panel p { font-family: var(--body); font-weight: 500; color: var(--ink-soft); font-size: var(--fs-body); line-height: 1.78; margin-top: 12px; }
-
-  .eyebrow { font-family: var(--body); font-size: var(--fs-body); font-weight: 600; color: var(--ink); margin: 28px 0 14px; }
-  .terms { display: flex; flex-direction: column; gap: 12px; }
-  .term { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; }
-  .term span:first-child { font-family: var(--body); font-weight: 500; font-size: var(--fs-body); color: var(--ink-soft); }
-  .term span:last-child { font-family: var(--body); font-weight: 600; font-size: var(--fs-body); color: var(--ink); }
-
-  .modal-cta { display: flex; margin: 30px auto 0; width: 100%; max-width: 384px; padding: 16px 20px; }
-  .modal-link { display: flex; justify-content: center; align-items: center; margin-top: 18px; font-family: var(--body); color: var(--primary); text-decoration: none; font-weight: 500; font-size: var(--fs-body); }
-  .modal-link:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .modal-panel p a { color: var(--primary); font-weight: 600; text-decoration: none; }
-  .modal-panel p a:hover { text-decoration: underline; text-underline-offset: 3px; }
-
-  .updates-form { display: flex; align-items: stretch; gap: 10px; margin-top: 24px; width: 100%; }
-  .updates-form input[type="email"] { flex: 1; min-width: 0; font-family: var(--body); font-size: var(--fs-body); font-weight: 500; color: var(--ink); padding: 16px 24px; border: 1px solid var(--surface-line); border-radius: 999px; background: var(--chip); outline: none; transition: border-color .15s ease; }
-  .updates-form input[type="email"]::placeholder { color: var(--ink-soft); }
-  .updates-form input[type="email"]:focus { border-color: var(--primary); }
-  .updates-form input[type="submit"] { flex: none; white-space: nowrap; appearance: none; -webkit-appearance: none; font-family: var(--body); font-size: var(--fs-body); font-weight: 600; letter-spacing: .01em; color: var(--primary-ink); background: var(--primary); border: none; border-radius: 999px; padding: 16px 28px; cursor: pointer; transition: filter .15s ease; }
-  .updates-form input[type="submit"]:hover { filter: brightness(1.06); }
-  .updates-form input[type="submit"]:active { transform: translateY(1px); }
-  .bot-field { position: absolute; left: -5000px; }
-  @media (max-width: 480px) { .updates-form { flex-direction: column; } }
-
-  @media (max-width: 560px) {
-    .pay-btn { gap: 6px; }
-    .pay-btn svg { width: 18px; height: 18px; }
-  }
-  @media (max-width: 710px) {
-    .modal-panel { padding: clamp(28px, 4vw, 40px); }
-    .modal-close { width: 16px; height: 16px; }
-  }
-
-  @media (max-width: 540px) {
-    .perk-br { display: inline; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .headline, .clockwrap, .cta-block { animation: none; }
-    * { transition: none !important; }
-  }
-</style>
+<title>POPOPX 官方域名安全公示 · domains.popopx.chat</title>
+<meta name="description" content="POPOPX 唯一官方域名清单：popopx.chat 主站与 node / mp / bot 子站、smp1–smp8 加密消息中继、bpay 支付节点，以及 GitHub 开源组织。附三步核验方法与仿冒识别指南。">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#F7F4ED" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0A0F" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="POPOPX">
+<meta property="og:title" content="POPOPX 官方域名安全公示">
+<meta property="og:description" content="官方域名只此一份清单：popopx.chat 与 popopx.im。清单之外，一律视为非官方。">
+<meta property="og:url" content="https://domains.popopx.chat/">
+<link rel="canonical" href="https://domains.popopx.chat/">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="icon" href="img/popopx-mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script src="assets/theme.js"></script>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-  <main class="hero">
-    <header class="topbar">
-      <a class="brand" href="/" aria-label="simplex.domains">
-        <img class="brand-logo logo-light" src="img/logo-light.png" alt="SimpleX" width="400" height="99">
-        <img class="brand-logo logo-dark" src="img/logo-dark.png" alt="SimpleX" width="401" height="101">
-      </a>
-      <button class="theme-switch-btn" id="themeToggle" aria-label="Switch light or dark theme">
-        <svg class="sun" viewBox="0 0 469 469" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M225.768 1.44594C220.301 3.84594 214.701 10.6459 213.768 15.9793C213.234 18.3793 213.101 31.7126 213.368 45.7126L213.768 71.1793L217.634 76.1126C226.701 88.1126 242.968 87.5793 252.301 75.0459C254.968 71.5793 255.101 69.5793 255.101 42.2459C255.101 14.9126 254.968 12.9126 252.301 9.44594C250.834 7.44594 248.034 4.51261 246.168 3.17928C241.768 -0.154057 231.101 -1.08739 225.768 1.44594Z"/>
-          <path d="M72.9687 65.3128C63.7687 71.5794 60.1687 81.4461 63.7687 91.1794C65.502 95.4461 98.702 129.446 104.035 132.379C106.035 133.446 110.569 134.246 114.035 134.246C126.035 134.246 134.435 125.846 134.435 113.846C134.435 110.379 133.635 105.846 132.569 103.846C129.635 98.5128 95.6353 65.3128 91.3687 63.5794C85.102 61.3128 77.902 61.9794 72.9687 65.3128Z"/>
-          <path d="M377.102 63.7128C373.102 65.3128 338.969 98.7794 336.302 103.846C335.236 105.846 334.436 110.379 334.436 113.846C334.436 125.846 342.836 134.246 354.836 134.246C358.302 134.246 362.836 133.446 364.836 132.379C370.169 129.446 403.369 95.4461 405.102 91.1794C408.702 81.4461 405.102 71.5794 395.902 65.3128C391.102 61.9794 383.102 61.3128 377.102 63.7128Z"/>
-          <path d="M211.635 108.246C185.635 113.179 163.502 125.046 144.302 144.112C117.902 170.512 104.968 203.579 106.835 240.246C109.768 297.712 149.102 344.912 205.902 359.179C218.568 362.379 250.302 362.379 262.968 359.179C310.435 347.312 345.768 312.646 358.702 265.046C362.435 251.446 362.835 219.446 359.368 205.712C347.368 158.112 312.302 122.379 265.235 110.112C251.768 106.512 225.502 105.579 211.635 108.246Z"/>
-          <path d="M12.4349 214.779C-0.498477 220.379 -4.09848 237.579 5.23486 248.246C11.2349 255.046 15.6349 255.846 45.3682 255.313C74.0349 254.913 75.1015 254.646 81.6349 245.713C85.9015 239.979 85.5015 228.113 80.8349 221.979C74.4349 213.713 71.2349 212.913 42.1682 212.913C23.7682 213.046 15.2349 213.579 12.4349 214.779Z"/>
-          <path d="M396.035 215.179C393.635 216.379 390.035 219.445 388.035 221.979C383.368 228.112 382.968 239.979 387.235 245.712C394.035 254.779 394.301 254.912 426.435 254.912C458.568 254.912 458.835 254.779 465.635 245.712C469.501 240.512 469.501 227.979 465.635 222.779C458.968 213.845 458.301 213.579 428.035 213.179C404.435 212.912 399.768 213.179 396.035 215.179Z"/>
-          <path d="M103.101 336.779C96.7013 340.779 65.368 373.179 63.768 377.313C57.368 394.513 74.168 411.313 91.368 404.913C95.6347 403.179 129.635 369.979 132.568 364.646C135.368 359.446 134.968 349.046 131.768 343.846C126.168 334.646 112.035 331.179 103.101 336.779Z"/>
-          <path d="M344.035 336.912C341.635 338.379 338.569 341.445 337.102 343.845C333.902 349.045 333.502 359.445 336.302 364.645C339.235 369.979 373.235 403.179 377.502 404.912C387.235 408.512 397.102 404.912 403.369 395.712C406.702 390.779 407.369 383.579 405.102 377.312C403.369 373.045 370.169 339.045 364.835 336.112C359.635 333.312 349.235 333.712 344.035 336.912Z"/>
-          <path d="M225.368 385.712C222.968 387.046 219.368 390.112 217.368 392.646L213.768 397.312V426.379C213.768 458.246 213.901 458.779 222.968 465.446C228.168 469.312 240.701 469.312 245.901 465.446C254.834 458.779 255.101 457.979 255.501 428.246C256.034 397.579 255.234 394.379 246.834 387.979C241.101 383.579 231.634 382.512 225.368 385.712Z"/>
-        </svg>
-        <svg class="moon" viewBox="3 5 24 25" xmlns="http://www.w3.org/2000/svg">
-          <path d="M10.895 7.574c0 7.55 5.179 13.67 11.567 13.67 1.588 0 3.101-0.38 4.479-1.063-1.695 4.46-5.996 7.636-11.051 7.636-6.533 0-11.83-5.297-11.83-11.83 0-4.82 2.888-8.959 7.023-10.803-0.116 0.778-0.188 1.573-0.188 2.39z"/>
-        </svg>
-      </button>
-    </header>
+<a class="skip" href="#main">跳到主要内容</a>
 
-    <div class="vspace"></div>
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="POPOPX 官方域名公示，回到顶部">
+      <img class="brand-mark" src="img/popopx-mark.svg" width="30" height="30" alt="">
+      <span class="brand-text">
+        <span class="brand-name">POPOPX</span>
+        <span class="brand-sub">DOMAIN SAFETY</span>
+      </span>
+    </a>
+    <nav class="site-nav" aria-label="页面导航">
+      <a href="#verify">核验方法</a>
+      <a href="#directory">域名清单</a>
+      <a href="#boundary">仿冒识别</a>
+      <a href="#transparency">透明度</a>
+    </nav>
+    <button class="theme-toggle" type="button" id="themeToggle" aria-pressed="false" aria-label="切换到深色模式">
+      <svg class="ico ico-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4.1"></circle>
+        <path d="M12 2.7v2.1M12 19.2v2.1M2.7 12h2.1M19.2 12h2.1M5.5 5.5l1.5 1.5M17 17l1.5 1.5M18.5 5.5L17 7M7 17l-1.5 1.5"></path>
+      </svg>
+      <svg class="ico ico-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.4 14.1A8.5 8.5 0 0 1 9.9 3.6a8.5 8.5 0 1 0 10.5 10.5Z"></path>
+      </svg>
+    </button>
+  </div>
+</header>
 
-    <div class="headline">
-      <h1>Your SimpleX domain</h1>
-      <p class="sub">One name for your public channel and contact address</p>
-    </div>
+<main id="main">
 
-    <div class="vspace vspace--cap"></div>
-
-    <div class="clockwrap">
-      <p class="saleline">Sale starts on <span id="saleWhen">Dec 12, 2026, 18:00 UTC</span>, in</p>
-      <div class="count" aria-label="Time until the public sale">
-        <div class="grp"><span class="big" id="d">--</span><span class="lbl" id="dLabel">days</span></div>
-        <span class="count-sep" aria-hidden="true"><i></i><i></i></span>
-        <div class="grp"><span class="big" id="h">--</span><span class="lbl">hrs</span></div>
-        <span class="count-sep" aria-hidden="true"><i></i><i></i></span>
-        <div class="grp"><span class="big" id="m">--</span><span class="lbl">min</span></div>
-        <span class="count-sep" aria-hidden="true"><i></i><i></i></span>
-        <div class="grp"><span class="big" id="s">--</span><span class="lbl">sec</span></div>
-      </div>
-    </div>
-
-    <div class="vspace vspace--cap"></div>
-
-    <div class="cta-block">
-      <a class="pill pill--primary" href="#invest">Invest to claim your name</a>
-      <p class="perk-note">Invest in SimpleX Chat <br class="perk-br">to get a name for 5 years</p>
-    </div>
-
-    <div class="vspace"></div>
-
-    <footer class="footer">
-        <div class="pay">
-          <span class="pay-note">Pay at launch with</span>
-          <div class="pay-row">
-            <button class="pay-btn" disabled>
-              <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M127.998 0C57.318 0 0 57.317 0 127.999c0 14.127 2.29 27.716 6.518 40.43H44.8V60.733l83.2 83.2 83.198-83.2v107.695h38.282c4.231-12.714 6.521-26.303 6.521-40.43C256 57.314 198.681 0 127.998 0" fill="#F60"/><path d="M108.867 163.062l-36.31-36.311v67.765H18.623c22.47 36.863 63.051 61.48 109.373 61.48s86.907-24.617 109.374-61.48h-53.933V126.75l-36.31 36.31-19.13 19.129-19.128-19.128h-.002z" fill="#4C4C4C"/></svg>
-              Monero
-            </button>
-            <button class="pay-btn" disabled>
-              <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g transform="translate(-289.60744,-341.50536)"><g transform="matrix(0.61129216,0,0,0.61129216,170.80346,315.53734)"><path d="m258.845 82.989c-4.274 17.143-21.637 27.576-38.782 23.301-17.138-4.274-27.571-21.638-23.295-38.78 4.272-17.145 21.635-27.579 38.775-23.305 17.144 4.274 27.576 21.64 23.302 38.784z" fill="#f7931a"></path><path d="m241.91 70.689c0.637-4.258-2.605-6.547-7.038-8.074l1.438-5.768-3.511-0.875-1.4 5.616c-0.923-0.23-1.871-0.447-2.813-0.662l1.41-5.653-3.509-0.875-1.439 5.766c-0.764-0.174-1.514-0.346-2.242-0.527l0.004-0.018-4.842-1.209-0.934 3.75c0 0 2.605 0.597 2.55 0.634 1.422 0.355 1.679 1.296 1.636 2.042l-1.638 6.571c0.098 0.025 0.225 0.061 0.365 0.117-0.117-0.029-0.242-0.061-0.371-0.092l-2.296 9.205c-0.174 0.432-0.615 1.08-1.609 0.834 0.035 0.051-2.552-0.637-2.552-0.637l-1.743 4.019 4.569 1.139c0.85 0.213 1.683 0.436 2.503 0.646l-1.453 5.834 3.507 0.875 1.439-5.772c0.958 0.26 1.888 0.5 2.798 0.726l-1.434 5.745 3.511 0.875 1.453-5.823c5.987 1.133 10.489 0.676 12.384-4.739 1.527-4.36-0.076-6.875-3.226-8.515 2.294-0.529 4.022-2.038 4.483-5.155zm-8.022 11.249c-1.085 4.36-8.426 2.003-10.806 1.412l1.928-7.729c2.38 0.594 10.012 1.77 8.878 6.317zm1.086-11.312c-0.99 3.966-7.1 1.951-9.082 1.457l1.748-7.01c1.982 0.494 8.365 1.416 7.334 5.553z" fill="#fff"></path></g></g></svg>
-              Bitcoin
-            </button>
-            <button class="pay-btn" disabled>
-              <svg class="sym" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path class="sym-back" fill-rule="evenodd" clip-rule="evenodd" d="M3.02972 8.59396L8.62219 14.186L14.3703 8.43848L17.1668 11.2346L11.4182 16.982L17.0112 22.5742L14.1371 25.448L8.5441 19.8557L2.79651 25.6035L0 22.8074L5.74813 17.0597L0.155656 11.4678L3.02972 8.59396Z"/>
-                <path fill="url(#simgrad)" fill-rule="evenodd" clip-rule="evenodd" d="M14.0922 25.5L16.9434 22.6486L16.9423 22.6478L22.6464 16.9456L17.0112 11.3519L17.0518 11.3514L14.2542 8.55418L8.65961 2.95973L11.5114 0.108337L17.106 5.70288L22.8095 0L25.607 2.79722L19.903 8.5L25.4981 14.0943L31.2022 8.39169L33.9997 11.1889L28.2957 16.8914L33.8914 22.4861L31.0396 25.3375L25.4439 19.7428L19.7404 25.4454L25.3361 31.0403L22.4843 33.8917L16.8887 28.2968L11.1862 34L8.38867 31.2028L14.0922 25.5Z"/>
-                <defs><linearGradient id="simgrad" x1="12.8379" y1="-0.693875" x2="9.54344" y2="31.4337" gradientUnits="userSpaceOnUse"><stop stop-color="#01F1FF"/><stop offset="1" stop-color="#0197FF"/></linearGradient></defs>
-              </svg>
-              In-app
-            </button>
-          </div>
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot" aria-hidden="true"></span>POPOPX · OFFICIAL DOMAIN INDEX</p>
+        <h1>官方域名，<span class="h1-accent">只此一份清单。</span></h1>
+        <p class="lead">无论链接来自聊天、邮件还是搜索结果，请先回到本页核对完整主机名，再输入任何账号、密码或恢复短语。清单之外的地址，无论多像，都不是 POPOPX。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#directory">查看官方域名清单</a>
+          <a class="btn btn-ghost" href="#verify">先学核验方法</a>
         </div>
-      <div class="footer-links">
-        <a href="https://wefunder.com/simplex.chat?utm_source=domains" target="_blank" rel="noopener">Invest on Wefunder</a>
-        <span class="sep">&middot;</span>
-        <a href="#trademarks">Trademark owners</a>
-        <span class="sep">&middot;</span>
-        <a href="#testing">Register a test name</a>
-      </div>
-    </footer>
-  </main>
-
-  <div class="modal" id="invest">
-    <a class="modal-backdrop" href="#" aria-label="Close"></a>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="cf-title">
-      <a class="modal-close" href="#" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2 L22 22 M22 2 L2 22"/></svg></a>
-      <h2 id="cf-title">Invest to claim your name before the sale</h2>
-      <p>If you invest $500 or more in the SimpleX Chat crowdfunding, you will receive <strong>a free SimpleX domain as a perk</strong>, and will be able to register it before the sale starts.</p>
-      <p>You will control this name with your own key, and can point it to your channel, business or contact address in SimpleX Network.</p>
-
-      <div class="eyebrow">Free SimpleX domain registration period</div>
-      <div class="terms">
-        <div class="term"><span>Early bird</span><span>5 years</span></div>
-        <div class="term"><span>After that</span><span>3 years</span></div>
+        <ul class="hero-meta">
+          <li>最后核验 <time datetime="2026-11-27">2026-11-27</time></li>
+          <li>9 个官方域名</li>
+          <li>零外部请求</li>
+        </ul>
       </div>
 
-      <a class="pill pill--primary modal-cta" href="https://wefunder.com/simplex.chat?utm_source=domains" target="_blank" rel="noopener">Learn more on Wefunder</a>
+      <div class="hero-cert">
+        <article class="cert" aria-label="官方域名核验摘要">
+          <div class="cert-top">
+            <span class="cert-kicker">OFFICIAL DOMAIN CERTIFICATE</span>
+            <span class="cert-no">NO. DOM-2026-11</span>
+          </div>
+          <div class="cert-body">
+            <p class="cert-claim">本页所列，即 POPOPX<br>全部官方入口。</p>
+            <p class="cert-note">清单之外，一律视为非官方。</p>
+            <dl class="cert-list">
+              <div><dt>域名后缀</dt><dd>popopx.chat / popopx.im</dd></div>
+              <div><dt>核验依据</dt><dd>DNS 解析 + TLS 证书 SAN</dd></div>
+              <div><dt>覆盖范围</dt><dd>网站 · 中继 · 代码仓库</dd></div>
+              <div><dt>最后核验</dt><dd>2026-11-27</dd></div>
+            </dl>
+          </div>
+          <div class="cert-foot">
+            <span class="cert-issuer">ISSUED BY POPOPX</span>
+            <svg class="cert-seal" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
+              <defs>
+                <path id="seal-top" d="M22,60 A38,38 0 0 1 98,60"></path>
+                <path id="seal-bottom" d="M22,60 A38,38 0 0 0 98,60"></path>
+              </defs>
+              <circle cx="60" cy="60" r="57" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.5"></circle>
+              <circle cx="60" cy="60" r="49" fill="none" stroke="currentColor" stroke-width="1.1" stroke-dasharray="1.5 4" opacity="0.5"></circle>
+              <text class="seal-text"><textPath href="#seal-top" startOffset="50%" text-anchor="middle">POPOPX · OFFICIAL DOMAIN</textPath></text>
+              <text class="seal-text"><textPath href="#seal-bottom" startOffset="50%" text-anchor="middle">VERIFIED · 2026</textPath></text>
+              <path d="M47 61.5l9 9 18-20" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+          </div>
+        </article>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="modal" id="trademarks">
-    <a class="modal-backdrop" href="#" aria-label="Close"></a>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tm-title">
-      <a class="modal-close" href="#" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2 L22 22 M22 2 L2 22"/></svg></a>
-      <h2 id="tm-title">Own a trademark?</h2>
-      <p>You can reserve the matching SimpleX domain before the sale starts. Email us at <a href="mailto:chat@simplex.chat">chat@simplex.chat</a> or <a href="https://smp6.simplex.im/a#lrdvu2d8A1GumSmoKb2krQmtKhWXq-tyGpHuM7aMwsw" target="_blank" rel="noopener">connect in the SimpleX Chat app</a>.</p>
+  <section class="section" id="verify" aria-labelledby="verify-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no" aria-hidden="true">01</span>
+        <div class="sec-title">
+          <h2 id="verify-h">核验方法</h2>
+          <p>三步确认你访问的是官方域名。</p>
+        </div>
+      </header>
+
+      <ol class="steps">
+        <li class="step">
+          <span class="step-no">STEP 01</span>
+          <h3>只从本页出发</h3>
+          <p>不要点开聊天记录里的「官方链接」，也不要相信搜索结果的广告位。手动输入 <code>domains.popopx.chat</code>，再从本页进入任何官方站点。</p>
+        </li>
+        <li class="step">
+          <span class="step-no">STEP 02</span>
+          <h3>逐字核对主机名</h3>
+          <p>官方只有 <code>popopx.chat</code>（网站）与 <code>popopx.im</code>（服务节点）两个后缀。子域名必须逐字一致：<code>node.popopx.chat</code> 是官方，<code>node-popopx.chat</code>、<code>popopx-node.chat</code> 都不是。</p>
+        </li>
+        <li class="step">
+          <span class="step-no">STEP 03</span>
+          <h3>核对证书与锁形图标</h3>
+          <p>点击地址栏的锁，确认证书由受信任机构签发，且「使用者可选名称（SAN）」包含你正在访问的完整主机名。证书不匹配或出现 <code>xn--</code> 前缀，立即关闭。</p>
+        </li>
+      </ol>
+
+      <aside class="rule-note">
+        <span class="rule-label">铁律</span>
+        <p>官方永远不会索要你的<strong>恢复短语、私钥、密码或短信验证码</strong>，也不会要求你远程共享屏幕、安装来源不明的安装包。</p>
+      </aside>
+
+      <div class="terminal">
+        <div class="terminal-bar">
+          <span class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="terminal-title">终端核验（可选）· 输出中必须出现你访问的完整主机名</span>
+        </div>
+        <pre class="terminal-body"><code>dig +short popopx.chat
+
+openssl s_client -connect popopx.chat:443 -servername popopx.chat &lt;/dev/null 2&gt;/dev/null \
+  | openssl x509 -noout -text | grep -A1 "Subject Alternative Name"</code></pre>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="modal" id="testing">
-    <a class="modal-backdrop" href="#" aria-label="Close"></a>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="tt-title">
-      <a class="modal-close" href="#" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2 L22 22 M22 2 L2 22"/></svg></a>
-      <h2 id="tt-title">Register a test SimpleX name</h2>
-      <p>You can register a free test name and use it with your channel or contact address in the SimpleX Chat app. Test names will stop working in the app when the SimpleX name sale starts.</p>
-      <p>You will need an Ethereum wallet and to pay a transaction fee.</p>
-      <a class="pill pill--primary modal-cta" href="https://testing-names.simplex.chat" target="_blank" rel="noopener">Register a test name</a>
-      <a class="modal-link" href="https://github.com/simplex-chat/simplex-chat/blob/master/docs/guide/register-simplex-name.md" target="_blank" rel="noopener">How to register a test name<svg class="ext" viewBox="0 0 100 100" aria-hidden="true"><path d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"/><polygon points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"/></svg></a>
+  <section class="section" id="directory" aria-labelledby="directory-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no" aria-hidden="true">02</span>
+        <div class="sec-title">
+          <h2 id="directory-h">官方域名清单</h2>
+          <p>共 9 个官方域名，分三类。任何未列于此的地址都不是 POPOPX。</p>
+        </div>
+      </header>
+
+      <section class="group" aria-labelledby="group-sites">
+        <div class="group-head"><h3 id="group-sites">官方网站与门户</h3><span class="group-count">6</span></div>
+        <ol class="ledger">
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">01</span>
+            <span class="row-host"><a href="https://popopx.chat/" target="_blank" rel="noopener noreferrer">popopx<span class="sfx">.chat</span></a></span>
+            <span class="row-role">旗舰主站与 <code>/i/v1/</code> 隐私邀请落地页</span>
+            <span class="tag tag-live">在线</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">02</span>
+            <span class="row-host"><a href="https://node.popopx.chat/" target="_blank" rel="noopener noreferrer">node.popopx<span class="sfx">.chat</span></a></span>
+            <span class="row-role">Mac Node 边缘智能中枢与桌面端下载</span>
+            <span class="tag tag-live">在线</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">03</span>
+            <span class="row-host"><a href="https://mp.popopx.chat/" target="_blank" rel="noopener noreferrer">mp.popopx<span class="sfx">.chat</span></a></span>
+            <span class="row-role">Service Suite 企业服务号与零知识频道套件</span>
+            <span class="tag tag-live">在线</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">04</span>
+            <span class="row-host"><a href="https://bot.popopx.chat/" target="_blank" rel="noopener noreferrer">bot.popopx<span class="sfx">.chat</span></a></span>
+            <span class="row-role">Bot Studio 自托管机器人工作台</span>
+            <span class="tag tag-live">在线</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">05</span>
+            <span class="row-host">status.popopx<span class="sfx">.chat</span></span>
+            <span class="row-role">基础设施实时运行状态监控 · 域名尚未解析</span>
+            <span class="tag tag-soon">筹备中</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">06</span>
+            <span class="row-host">domains.popopx<span class="sfx">.chat</span></span>
+            <span class="row-role">官方域名安全公示页（本页）</span>
+            <span class="tag tag-self">本页</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="group" aria-labelledby="group-nodes">
+        <div class="group-head"><h3 id="group-nodes">核心中继与生态服务节点</h3><span class="group-count">2</span></div>
+        <ol class="ledger">
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">07</span>
+            <span class="row-host"><a href="https://smp1.popopx.im/" target="_blank" rel="noopener noreferrer">smp1.popopx<span class="sfx">.im</span></a></span>
+            <span class="row-role">官方加密消息中继（SMP Relay）· smp2–smp8 同域提供同一服务</span>
+            <span class="tag tag-live">在线</span>
+          </li>
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">08</span>
+            <span class="row-host"><a href="https://bpay.popopx.im/" target="_blank" rel="noopener noreferrer">bpay.popopx<span class="sfx">.im</span></a></span>
+            <span class="row-role">非托管 BTCPay 闪电网络支付机器人</span>
+            <span class="tag tag-login">需登录</span>
+          </li>
+        </ol>
+      </section>
+
+      <section class="group" aria-labelledby="group-code">
+        <div class="group-head"><h3 id="group-code">官方开源代码组织</h3><span class="group-count">1</span></div>
+        <ol class="ledger">
+          <li class="row">
+            <span class="row-idx" aria-hidden="true">09</span>
+            <span class="row-host"><a href="https://github.com/popopx-chat" target="_blank" rel="noopener noreferrer">github.com<span class="sfx">/popopx-chat</span></a></span>
+            <span class="row-role">官方开源代码与签名公证版本发布源</span>
+            <span class="tag tag-repo">仓库</span>
+          </li>
+        </ol>
+      </section>
     </div>
-  </div>
+  </section>
 
-  <div class="modal" id="updates">
-    <a class="modal-backdrop" href="#" aria-label="Close"></a>
-    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="up-title">
-      <a class="modal-close" href="#" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 2 L22 22 M22 2 L2 22"/></svg></a>
-      <h2 id="up-title">Get launch updates</h2>
-      <p>We will email you updates about SimpleX names launch and other SimpleX Network news.</p>
-      <form class="updates-form" action="https://chat.us2.list-manage.com/subscribe/post?u=ddd892b258ae36e5438e6d4e1&amp;id=ad6037a2fe&amp;f_id=0018f8e3f0" method="post" target="_blank">
-        <input type="email" name="EMAIL" placeholder="Enter your email" aria-label="Email address" required>
-        <input type="hidden" name="SOURCE" value="domains">
-        <span aria-hidden="true" class="bot-field"><input type="text" name="b_ddd892b258ae36e5438e6d4e1_ad6037a2fe" tabindex="-1" value=""></span>
-        <input type="submit" name="subscribe" value="Notify me">
-      </form>
-      <a class="modal-link" href="https://simplex.chat/news/" target="_blank" rel="noopener">Or join SimpleX channel<svg class="ext" viewBox="0 0 100 100" aria-hidden="true"><path d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"/><polygon points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"/></svg></a>
+  <section class="section" id="boundary" aria-labelledby="boundary-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no" aria-hidden="true">03</span>
+        <div class="sec-title">
+          <h2 id="boundary-h">仿冒识别</h2>
+          <p>仿冒站点的共同点，是让你「觉得」自己还在官方域名的路上。</p>
+        </div>
+      </header>
+
+      <div class="split">
+        <article class="panel">
+          <h3>常见的仿冒手法</h3>
+          <ul class="ticks ticks-no">
+            <li><strong>连字符与数字替换</strong> — <code>popopx-chat.com</code>、<code>pop0px.chat</code>、<code>popopx1.chat</code> 这类形近域名。</li>
+            <li><strong>其他顶级域</strong> — <code>popopx.xyz</code> 实测解析到与主站相同的服务器，但证书不匹配，不属于 POPOPX。</li>
+            <li><strong>同形字与 Punycode</strong> — 用西里尔字母等形近字符拼出「popopx」，地址栏会出现 <code>xn--</code> 前缀。</li>
+            <li><strong>搜索广告位</strong> — 仿冒站常购买关键词广告，排在官方结果之上。</li>
+            <li><strong>私聊「客服」</strong> — 在 Telegram、微信、Discord 私聊中自称官方的账号。</li>
+            <li><strong>短链接跳转</strong> — 以「官方新域名」「备用入口」为名，把你带到无关站点。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h3>官方绝不会做的事</h3>
+          <ul class="ticks ticks-yes">
+            <li>索要恢复短语、私钥、密码或短信验证码</li>
+            <li>要求远程控制你的设备或共享屏幕</li>
+            <li>通过私聊发送安装包或「内测版本」</li>
+            <li>用 <code>popopx.im</code> 裸域作为网页入口（该域只承载节点，不提供网页）</li>
+            <li>在清单之外启用「备用域名」或「镜像站」</li>
+            <li>在页面里加载第三方统计、字体或追踪像素</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="inline-note">发现可疑站点？记录完整 URL 与截图，到 <a href="https://github.com/popopx-chat" target="_blank" rel="noopener noreferrer">github.com/popopx-chat</a> 的仓库提交 Issue。本页不会通过私聊处理任何安全报告。</p>
     </div>
+  </section>
+
+  <section class="section" id="transparency" aria-labelledby="transparency-h">
+    <div class="wrap">
+      <header class="sec-head">
+        <span class="sec-no" aria-hidden="true">04</span>
+        <div class="sec-title">
+          <h2 id="transparency-h">页面透明度</h2>
+          <p>本页也接受同样的核验标准。</p>
+        </div>
+      </header>
+
+      <div class="cards">
+        <article class="card">
+          <span class="card-no" aria-hidden="true">A</span>
+          <h3>零外部请求</h3>
+          <p>不加载任何第三方脚本、统计、追踪像素或 CDN 资源。样式、脚本与字体全部同源自托管，服务器以 <code>default-src 'self'</code> 的 CSP 强制约束。</p>
+        </article>
+        <article class="card">
+          <span class="card-no" aria-hidden="true">B</span>
+          <h3>零追踪存储</h3>
+          <p>不使用 Cookie，不做设备指纹。<code>localStorage</code> 只保存明暗主题偏好，不包含任何标识符。</p>
+        </article>
+        <article class="card">
+          <span class="card-no" aria-hidden="true">C</span>
+          <h3>可逐字核对</h3>
+          <p>本页源码与 CentOS 部署脚本公开在 <code>github.com/popopx-chat/popopx.domains</code>，域名清单可逐行比对。</p>
+        </article>
+        <article class="card">
+          <span class="card-no" aria-hidden="true">D</span>
+          <h3>核验有据</h3>
+          <p>清单中的每个域名都经过 DNS 解析与 TLS 证书 SAN 实测；未上线的入口标注「筹备中」，不用占位链接充数。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img src="img/popopx-mark.svg" width="26" height="26" alt="">
+      <div>
+        <strong>POPOPX</strong>
+        <span>官方域名公示 · domains.popopx.chat</span>
+      </div>
+    </div>
+    <nav class="foot-links" aria-label="相关官方入口">
+      <a href="https://popopx.chat/" target="_blank" rel="noopener noreferrer">主站 popopx.chat</a>
+      <a href="https://github.com/popopx-chat" target="_blank" rel="noopener noreferrer">GitHub 组织</a>
+    </nav>
+    <p class="foot-note">最后核验 2026-11-27 · 本页不托管用户数据，不收集访问信息。</p>
   </div>
+</footer>
 
-  <script>
-    const SALE = Date.UTC(2026, 11, 12, 18, 0, 0);
-    const pad = n => String(n).padStart(2, "0");
-
-    function set(id, value) { document.getElementById(id).textContent = value; }
-
-    function tick() {
-      const sec = Math.floor(Math.max(0, SALE - Date.now()) / 1000);
-      const days = Math.floor(sec / 86400);
-      set("d", days);
-      set("h", pad(Math.floor((sec % 86400) / 3600)));
-      set("m", pad(Math.floor((sec % 3600) / 60)));
-      set("s", pad(sec % 60));
-      set("dLabel", days === 1 ? "day" : "days");
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    document.getElementById("saleWhen").textContent = new Date(SALE).toLocaleString([], { year: "numeric", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
-
-    const themeToggle = document.getElementById("themeToggle");
-    themeToggle.addEventListener("click", () => {
-      const dark = document.documentElement.classList.toggle("dark");
-      localStorage.setItem("theme", dark ? "dark" : "light");
-    });
-
-    document.addEventListener("keydown", e => {
-      if (e.key === "Escape" && location.hash) {
-        location.hash = "";
-        history.replaceState(null, "", location.pathname + location.search);
-      }
-    });
-
-    function setSignupSource() {
-      const field = document.querySelector('input[name="SOURCE"]');
-      const inHash = new URLSearchParams(location.hash.replace(/^#\??/, '')).get('utm_source');
-      const source = inHash ?? new URLSearchParams(location.search).get('utm_source');
-      if (source && /^[\w.-]{1,40}$/.test(source)) {
-        if (field) field.value = source;
-        document.querySelectorAll('a[href^="https://wefunder.com/simplex.chat"]').forEach(a => {
-          a.href = "https://wefunder.com/simplex.chat?utm_source=" + source;
-        });
-      }
-    }
-    setSignupSource();
-  </script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>

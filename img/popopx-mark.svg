@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="POPOPX">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8A33D6"/>
+      <stop offset="1" stop-color="#43107A"/>
+    </linearGradient>
+    <linearGradient id="p" x1="22" y1="21" x2="41" y2="42" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7A2BBE"/>
+      <stop offset="1" stop-color="#3D0A6D"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <rect x="10" y="12" width="44" height="36" rx="12" fill="#FAF6FE"/>
+  <path d="M16 46h12l-8 12z" fill="#FAF6FE"/>
+  <rect x="22" y="21" width="5" height="20" rx="2" fill="url(#p)"/>
+  <path d="M27 21h7a6 6 0 0 1 0 12h-7z" fill="url(#p)"/>
+</svg>
